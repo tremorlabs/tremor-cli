@@ -1,4 +1,4 @@
-export type Framework = "next" | "vite" | "redwood" | "cra";
+export type Framework = "next" | "vite" | "redwood" | "cra" | "other";
 
 export type FrameworkConfigType =
   | "NEXT_APP_DIR"

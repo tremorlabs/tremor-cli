@@ -32,5 +32,9 @@ export async function getFrameworkConfigType(
     return "CRA";
   }
 
+  if (framework == "other") {
+    return "CRA";
+  }
+
   return "NEXT_APP_DIR";
 }

@@ -56,6 +56,7 @@ async function main() {
           { title: "Vite", value: "vite" },
           { title: "Redwood", value: "redwood" },
           { title: "Create React App", value: "cra" },
+          { title: "Other", value: "other" },
         ],
       });
 
