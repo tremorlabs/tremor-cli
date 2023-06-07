@@ -1,25 +1,21 @@
 import { Framework, FrameworkConfigType } from "../types";
 import fs from "fs-extra";
 
-export async function getFrameworkConfigType(
+export function getFrameworkConfigType(
   framework: Framework
-): Promise<FrameworkConfigType> {
+): FrameworkConfigType {
   if (framework === "next") {
-    let config: FrameworkConfigType = "NEXT_PAGES_DIR";
-    await fs.readdir(".", (err, files) => {
-      files.some((file) => {
-        if (file.includes("src")) {
-          config = "NEXT_SRC_DIR";
-          return true;
-        }
+    const filenames = fs.readdirSync(".");
+    for (const filename of filenames) {
+      if (filename.includes("src")) {
+        return "NEXT_SRC_DIR";
+      }
 
-        if (file.includes("app")) {
-          config = "NEXT_APP_DIR";
-          return true;
-        }
-      });
-    });
-    return config;
+      if (filename.includes("app")) {
+        return "NEXT_APP_DIR";
+      }
+    }
+    return "NEXT_PAGES_DIR";
   }
 
   if (framework === "vite") {

@@ -61,7 +61,7 @@ async function main() {
       });
 
       // Infer the type of the framework configuration
-      const frameworkConfigType = await getFrameworkConfigType(framework);
+      const frameworkConfigType = getFrameworkConfigType(framework);
 
       if (!options.yes) {
         const { proceed } = await prompts({
