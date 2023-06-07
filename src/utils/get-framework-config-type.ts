@@ -5,34 +5,36 @@ export async function getFrameworkConfigType(
   framework: Framework
 ): Promise<FrameworkConfigType> {
   if (framework === "next") {
+    let config: FrameworkConfigType = "NEXT_PAGES_DIR";
     await fs.readdir(".", (err, files) => {
-      files.forEach((file) => {
+      files.some((file) => {
         if (file.includes("/src/")) {
-          return "NEXT_SRC_DIR";
+          config = "NEXT_SRC_DIR";
+          return true;
         }
 
         if (file.includes("/app/")) {
-          return "NEXT_APP_DIR";
+          config = "NEXT_APP_DIR";
+          return true;
         }
-
-        return "NEXT_PAGES_DIR";
       });
     });
+    return config;
   }
 
-  if (framework == "vite") {
+  if (framework === "vite") {
     return "VITE";
   }
 
-  if (framework == "redwood") {
+  if (framework === "redwood") {
     return "REDWOOD";
   }
 
-  if (framework == "cra") {
+  if (framework === "cra") {
     return "CRA";
   }
 
-  if (framework == "other") {
+  if (framework === "other") {
     return "CRA";
   }
 
