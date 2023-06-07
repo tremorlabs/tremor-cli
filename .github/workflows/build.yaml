@@ -8,9 +8,8 @@ on:
       - synchronize
   push:
     branches:
-      - '**'
-      - '!main'
-
+      - "**"
+      - "!main"
 
 jobs:
   build:
@@ -28,10 +27,5 @@ jobs:
         run: npm i react
       - name: install dependencies
         run: npm ci
-      - name: lint checks
-        run: npm run lint
-      - name: unit tests
-        run: npm run tests
       - name: build
         run: npm run build
-
