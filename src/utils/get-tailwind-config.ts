@@ -28,5 +28,6 @@ module.exports = {
   theme: ${THEME},
   safelist: ${SAFELIST},
   plugins: [require("@headlessui/tailwindcss")],
-};`;
+};
+`;
 };
