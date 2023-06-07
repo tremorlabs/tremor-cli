@@ -1,6 +1,6 @@
 {
   "name": "@tremor/cli",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A CLI for configuring Tremor in your project.",
   "publishConfig": {
     "access": "public"
