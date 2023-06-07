@@ -8,12 +8,12 @@ export async function getFrameworkConfigType(
     let config: FrameworkConfigType = "NEXT_PAGES_DIR";
     await fs.readdir(".", (err, files) => {
       files.some((file) => {
-        if (file.includes("/src/")) {
+        if (file.includes("src")) {
           config = "NEXT_SRC_DIR";
           return true;
         }
 
-        if (file.includes("/app/")) {
+        if (file.includes("app")) {
           config = "NEXT_APP_DIR";
           return true;
         }
