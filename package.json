@@ -1,6 +1,6 @@
 {
   "name": "@tremor/cli",
-  "version": "0.0.11",
+  "version": "0.0.0-development",
   "description": "A CLI for configuring Tremor in your project.",
   "publishConfig": {
     "access": "public"
@@ -39,7 +39,8 @@
     "release": "changeset version",
     "pub:beta": "pnpm build && pnpm publish --no-git-checks --access public --tag beta",
     "pub:next": "pnpm build && pnpm publish --no-git-checks --access public --tag next",
-    "pub:release": "pnpm build && pnpm publish --access public"
+    "pub:release": "pnpm build && pnpm publish --access public",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "chalk": "5.2.0",
