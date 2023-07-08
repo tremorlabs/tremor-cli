@@ -54,6 +54,7 @@ async function main() {
         choices: [
           { title: "Next", value: "next" },
           { title: "Vite", value: "vite" },
+          { title: "Refine", value: "refine" },
           { title: "Redwood", value: "redwood" },
           { title: "Create React App", value: "cra" },
           { title: "Other", value: "other" },
