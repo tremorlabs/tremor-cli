@@ -32,6 +32,12 @@ export const CONTENT_CRA = `[
     "../node_modules/@tremor/**/*.{js,ts,jsx,tsx}",
   ]`;
 
+export const CONTENT_REFINE = `[
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}",
+  ]`;
+
 export const SAFELIST = `[
     {
       pattern:

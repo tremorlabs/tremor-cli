@@ -30,6 +30,10 @@ export function getFrameworkConfigType(
     return "CRA";
   }
 
+  if (framework === "refine") {
+    return "CRA";
+  }
+
   if (framework === "other") {
     return "CRA";
   }
