@@ -69,7 +69,7 @@ async function main() {
           type: "confirm",
           name: "proceed",
           message:
-            "Running this command will install dependencies and. Proceed?",
+            "Running this command will install dependencies and overwrite existing tailwind configurations. Proceed?",
           initial: true,
         });
 
@@ -97,18 +97,18 @@ async function main() {
       const tailwindConfigFileExists = fs.existsSync(tailwindDestination);
 
       // If the tailwind config file already exists, prompt the user to overwrite it
-      if (tailwindConfigFileExists) {
-        const { overwrite } = await prompts({
-          type: "confirm",
-          name: "overwrite",
-          message: `A ${tailwindConfigFileName} already exists. Overwrite it?`,
-          initial: false,
-        });
+      // if (tailwindConfigFileExists) {
+      //   const { overwrite } = await prompts({
+      //     type: "confirm",
+      //     name: "overwrite",
+      //     message: `A ${tailwindConfigFileName} already exists. Overwrite it?`,
+      //     initial: false,
+      //   });
 
-        if (!overwrite) {
-          process.exit(0);
-        }
-      }
+      //   if (!overwrite) {
+      //     process.exit(0);
+      //   }
+      // }
 
       // Write the tailwind config file
       const tailwindSpinner = ora(`Configuring ${tailwindConfigFileName}...`).start();
