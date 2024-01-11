@@ -24,6 +24,7 @@ const tailwindContentConfigs: { [key in FrameworkConfigType]: string } = {
 export const getTailwindConfig = (frameworkConfigType: FrameworkConfigType) => {
   const contentConfig = tailwindContentConfigs[frameworkConfigType];
   return `/** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors');
 /* eslint-disable max-len */
 module.exports = {
   content: ${contentConfig},
