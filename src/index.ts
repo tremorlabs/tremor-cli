@@ -100,7 +100,7 @@ async function main() {
         packageManager === "npm" ? "install" : "add",
         "@headlessui/tailwindcss",
       ]);
-      headlessUiSpinner.succeed();
+      headlessUiTailwindCssSpinner.succeed();
 
       const tailwindFormsSpinner = ora(
         `Installing @tailwindcss/forms as a dev dependency...`
