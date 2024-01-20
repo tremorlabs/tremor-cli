@@ -86,20 +86,39 @@ async function main() {
       ]);
       tremorSpinner.succeed();
 
-      const dependenciesSpinner = ora(
-        `Installing Tailwind CSS dependency...`
+      const headlessUiSpinner = ora(`Installing @headlessui/react...`).start();
+      await execa(packageManager, [
+        packageManager === "npm" ? "install" : "add",
+        "@headlessui/react",
+      ]);
+      headlessUiSpinner.succeed();
+
+      const headlessUiTailwindCssSpinner = ora(
+        `Installing @headlessui/tailwindcss...`
       ).start();
       await execa(packageManager, [
         packageManager === "npm" ? "install" : "add",
-        "-D @tailwindcss/forms",
+        "@headlessui/tailwindcss",
       ]);
-      dependenciesSpinner.succeed();
+      headlessUiSpinner.succeed();
+
+      const tailwindFormsSpinner = ora(
+        `Installing @tailwindcss/forms as a dev dependency...`
+      ).start();
+      await execa(packageManager, [
+        packageManager === "npm" ? "install" : "add",
+        "@tailwindcss/forms",
+        packageManager === "npm" ? "--save-dev" : "--dev",
+      ]);
+      tailwindFormsSpinner.succeed();
 
       // Check the kind of project (TypeScript/JavaScript)
       const isTypeScriptProject = fs.existsSync("tsconfig.json");
 
       // Infer the name of the tailwind config file accordingly
-      const tailwindConfigFileName = isTypeScriptProject ? "tailwind.config.ts" : "tailwind.config.js";
+      const tailwindConfigFileName = isTypeScriptProject
+        ? "tailwind.config.ts"
+        : "tailwind.config.js";
       const tailwindDestination = `./${tailwindConfigFileName}`;
 
       // Check if the tailwind config file already exists
@@ -120,7 +139,9 @@ async function main() {
       // }
 
       // Write the tailwind config file
-      const tailwindSpinner = ora(`Configuring ${tailwindConfigFileName}...`).start();
+      const tailwindSpinner = ora(
+        `Configuring ${tailwindConfigFileName}...`
+      ).start();
       await fs.writeFile(
         tailwindDestination,
         getTailwindConfig(frameworkConfigType),
