@@ -8,6 +8,7 @@ import {
   CONTENT_VITE,
   SAFELIST,
   THEME,
+  PLUGINS,
 } from "../templates";
 import { FrameworkConfigType } from "../types";
 
@@ -30,7 +31,7 @@ module.exports = {
   content: ${contentConfig},
   theme: ${THEME},
   safelist: ${SAFELIST},
-  plugins: [require("@headlessui/tailwindcss")],
+  plugins: ${PLUGINS},
 };
 `;
 };
