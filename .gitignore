@@ -17,6 +17,7 @@
 
 # misc
 .DS_Store
+src/.DS_Store
 *.pem
 .vscode
 
@@ -34,3 +35,4 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
