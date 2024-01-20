@@ -38,7 +38,7 @@ export const CONTENT_REFINE = `[
     "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}",
   ]`;
 
-export const SAFELIST = `safelist: [
+export const SAFELIST = `[
   {
     pattern:
       /^(bg-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
@@ -66,7 +66,7 @@ export const SAFELIST = `safelist: [
     pattern:
       /^(fill-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
   },
-],`;
+]`;
 
 export const THEME = `{
     transparent: "transparent",
@@ -158,4 +158,4 @@ export const THEME = `{
     },
   }`;
 
-export const PLUGINS = `[require('@headlessui/tailwindcss'), require('@tailwindcss/forms')],`;
+export const PLUGINS = `[require('@headlessui/tailwindcss'), require('@tailwindcss/forms')]`;
