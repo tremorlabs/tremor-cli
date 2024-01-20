@@ -69,7 +69,7 @@ async function main() {
           type: "confirm",
           name: "proceed",
           message:
-            "Running this command will install dependencies and overwrite your existing tailwind.config.js. Proceed?",
+            "Running this command will install dependencies and overwrite existing tailwind configurations. Proceed?",
           initial: true,
         });
 
@@ -95,8 +95,32 @@ async function main() {
       ]);
       dependenciesSpinner.succeed();
 
-      const tailwindDestination = "./tailwind.config.js";
-      const tailwindSpinner = ora(`Configuring tailwind.config.js...`).start();
+      // Check the kind of project (TypeScript/JavaScript)
+      const isTypeScriptProject = fs.existsSync("tsconfig.json");
+
+      // Infer the name of the tailwind config file accordingly
+      const tailwindConfigFileName = isTypeScriptProject ? "tailwind.config.ts" : "tailwind.config.js";
+      const tailwindDestination = `./${tailwindConfigFileName}`;
+
+      // Check if the tailwind config file already exists
+      const tailwindConfigFileExists = fs.existsSync(tailwindDestination);
+
+      // If the tailwind config file already exists, prompt the user to overwrite it
+      // if (tailwindConfigFileExists) {
+      //   const { overwrite } = await prompts({
+      //     type: "confirm",
+      //     name: "overwrite",
+      //     message: `A ${tailwindConfigFileName} already exists. Overwrite it?`,
+      //     initial: false,
+      //   });
+
+      //   if (!overwrite) {
+      //     process.exit(0);
+      //   }
+      // }
+
+      // Write the tailwind config file
+      const tailwindSpinner = ora(`Configuring ${tailwindConfigFileName}...`).start();
       await fs.writeFile(
         tailwindDestination,
         getTailwindConfig(frameworkConfigType),
