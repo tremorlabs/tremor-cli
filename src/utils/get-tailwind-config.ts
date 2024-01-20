@@ -8,6 +8,7 @@ import {
   CONTENT_VITE,
   SAFELIST,
   THEME,
+  PLUGINS,
 } from "../templates";
 import { FrameworkConfigType } from "../types";
 
@@ -24,12 +25,13 @@ const tailwindContentConfigs: { [key in FrameworkConfigType]: string } = {
 export const getTailwindConfig = (frameworkConfigType: FrameworkConfigType) => {
   const contentConfig = tailwindContentConfigs[frameworkConfigType];
   return `/** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors');
 /* eslint-disable max-len */
 module.exports = {
   content: ${contentConfig},
   theme: ${THEME},
   safelist: ${SAFELIST},
-  plugins: [require("@headlessui/tailwindcss")],
+  plugins: ${PLUGINS},
 };
 `;
 };

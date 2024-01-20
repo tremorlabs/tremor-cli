@@ -79,10 +79,19 @@ async function main() {
       }
 
       // Install tremor
-      const dependenciesSpinner = ora(`Installing @tremor/react...`).start();
+      const tremorSpinner = ora(`Installing @tremor/react...`).start();
       await execa(packageManager, [
         packageManager === "npm" ? "install" : "add",
         "@tremor/react",
+      ]);
+      tremorSpinner.succeed();
+
+      const dependenciesSpinner = ora(
+        `Installing Tailwind CSS dependency...`
+      ).start();
+      await execa(packageManager, [
+        packageManager === "npm" ? "install" : "add",
+        "-D @tailwindcss/forms",
       ]);
       dependenciesSpinner.succeed();
 
